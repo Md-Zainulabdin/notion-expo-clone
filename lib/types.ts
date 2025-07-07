@@ -14,7 +14,7 @@ export interface NotionFile {
   description: string
   content: string
   type: string
-  author_id: string // Changed from number to string for Clerk user IDs
+  author_id: string
   parent_file_id: number | null
   order_index: number
   created_at: string
