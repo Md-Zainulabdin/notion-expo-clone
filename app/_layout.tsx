@@ -5,6 +5,7 @@ import "./globals.css";
 import { Stack, useRouter, useSegments } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 function InitialLayout() {
@@ -36,13 +37,15 @@ export default function RootLayout() {
       <StatusBar style="auto" />
 
       {/* Safe Area View */}
-      <ClerkProvider tokenCache={tokenCache}>
-        <SafeAreaProvider>
-          <SafeAreaView style={{ flex: 1 }}>
-            <InitialLayout />
-          </SafeAreaView>
-        </SafeAreaProvider>
-      </ClerkProvider>
+      <GestureHandlerRootView>
+        <ClerkProvider tokenCache={tokenCache}>
+          <SafeAreaProvider>
+            <SafeAreaView style={{ flex: 1 }}>
+              <InitialLayout />
+            </SafeAreaView>
+          </SafeAreaProvider>
+        </ClerkProvider>
+      </GestureHandlerRootView>
     </>
   );
 }
