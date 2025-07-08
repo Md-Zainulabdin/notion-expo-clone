@@ -19,7 +19,7 @@ export const useNotionFiles = (parentFileId: number | null = null) => {
         .from("notion_files")
         .select("*")
         .order("order_index", { ascending: true })
-        .order("created_at", { ascending: false });
+        .order("created_at", { ascending: true });
 
       if (parentFileId === null) {
         query.is("parent_file_id", null);
@@ -32,7 +32,7 @@ export const useNotionFiles = (parentFileId: number | null = null) => {
       if (fetchError) {
         throw fetchError;
       }
-
+      
       setFiles(data || []);
     } catch (err) {
       console.error("Error fetching files:", err);
